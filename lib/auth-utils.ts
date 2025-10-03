@@ -22,7 +22,7 @@ export function generateOTP(): string {
 
 export function validateOTP(otp: string): boolean {
   // Check if OTP is 6 digits
-  return /^\d{6}$/.test(otp)
+  return /^\d{4}$/.test(otp)
 }
 
 export function storeAuthData(phone: string, userType: string) {
