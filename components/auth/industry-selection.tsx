@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Check } from "lucide-react"
 
@@ -129,25 +128,25 @@ export function IndustrySelection({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[55vh] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
+      <div className="grid grid-cols-2 gap-3 max-h-[60vh] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
         {industries.map((industry, index) => {
           const isSelected = selectedIndustries.includes(industry.id)
           const isDisabled = isMaxReached && !isSelected
 
           return (
-            <Card
+            <div
               key={industry.id}
               onClick={() => !isDisabled && handleSelect(industry.id)}
-              className={`cursor-pointer transition-all duration-300 overflow-hidden group relative ${
+              className={`cursor-pointer transition-all duration-300 overflow-hidden group relative rounded-xl ${
                 isSelected
-                  ? "ring-2 ring-primary shadow-2xl scale-[1.02] bg-primary/5"
+                  ? "ring-2 ring-primary shadow-2xl scale-[1.02]"
                   : isDisabled
                     ? "opacity-50 cursor-not-allowed"
                     : "hover:ring-2 hover:ring-primary/50 hover:shadow-xl hover:scale-[1.01]"
               } animate-in fade-in slide-in-from-bottom-2`}
               style={{ animationDelay: `${index * 40}ms` }}
             >
-              <div className="relative h-40 overflow-hidden">
+              <div className="relative h-36 sm:h-44 overflow-hidden rounded-xl">
                 <img
                   src={industry.image || "/placeholder.svg"}
                   alt={industry.name}
@@ -159,19 +158,19 @@ export function IndustrySelection({
                         : "group-hover:scale-110 group-hover:brightness-95"
                   }`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
-                <h3 className="absolute bottom-4 left-4 right-4 text-white font-bold text-lg leading-tight drop-shadow-lg">
+                <h3 className="absolute bottom-3 left-3 right-3 text-white font-bold text-sm sm:text-base leading-tight drop-shadow-lg">
                   {industry.name}
                 </h3>
 
                 {isSelected && (
-                  <div className="absolute top-4 right-4 w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-lg animate-in zoom-in duration-300 ring-2 ring-white">
-                    <Check className="w-5 h-5 text-white stroke-[3]" />
+                  <div className="absolute top-3 right-3 w-7 h-7 sm:w-8 sm:h-8 bg-primary rounded-full flex items-center justify-center shadow-lg animate-in zoom-in duration-300 ring-2 ring-white">
+                    <Check className="w-4 h-4 sm:w-5 sm:h-5 text-white stroke-[3]" />
                   </div>
                 )}
               </div>
-            </Card>
+            </div>
           )
         })}
       </div>

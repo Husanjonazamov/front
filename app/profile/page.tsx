@@ -149,7 +149,7 @@ export default function ProfilePage() {
             onBack={() => setIsEditingIndustries(false)}
             initialSelected={userData.industries}
             minSelection={1}
-            maxSelection={4}
+            maxSelection={100}
           />
         </div>
       </div>

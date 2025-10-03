@@ -150,7 +150,7 @@ export function RegisterForm() {
         onSelect={handleIndustrySelect}
         onBack={() => setStep("basic")}
         minSelection={1}
-        maxSelection={4}
+        maxSelection={10}
       />
     )
   }
